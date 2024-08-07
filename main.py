@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException
 
 
 driver = webdriver.Chrome()
@@ -9,7 +10,7 @@ driver.get("https://mate.academy/")
 def find_element_with_fallback(driver, css_selector, fallback="Not Found"):
     try:
         return driver.find_element(By.CSS_SELECTOR, css_selector).text
-    except:
+    except NoSuchElementException:
         return fallback
 
 
